@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GANDENG · Purwarupa</title>
+<meta name="description" content="Purwarupa GANDENG: protokol jeda bertingkat berbasis kecerdasan artifisial dan kontak wali untuk transfer berisiko.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfbfa;--panel:#fff;--line:#e9e9e7;--ink:#37352f;--mute:#787774;--navy:#0B2A5B;--blue:#1F6FEB;--purple:#6D4AFF;--green:#2E9E5B;--orange:#D9860B;--red:#D93A3A;--soft:#f1f1ef;--r:10px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;background:rgba(251,251,250,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.top{max-width:1180px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;color:var(--navy)}
+.logo svg{flex:none}
+nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+nav button{border:0;background:none;padding:7px 12px;border-radius:8px;font:600 14px Inter,sans-serif;color:var(--mute);cursor:pointer}
+nav button.on{background:var(--soft);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:22px 16px 60px}
+h1{font-size:28px;margin:0 0 4px;letter-spacing:-.3px}
+h2{font-size:19px;margin:0 0 10px}
+h3{font-size:15px;margin:0 0 6px}
+.lead{color:var(--mute);margin:0 0 20px;max-width:760px}
+.grid{display:grid;gap:16px}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.mute{color:var(--mute)}
+.small{font-size:13px}
+.tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700;color:#fff}
+.t-g{background:var(--green)}.t-y{background:var(--orange)}.t-r{background:var(--red)}.t-p{background:var(--purple)}.t-b{background:var(--blue)}.t-n{background:var(--navy)}
+label{display:block;font-size:13px;font-weight:600;margin:10px 0 4px}
+select,input[type=number],input[type=text]{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:9px;padding:10px 14px;font:700 14px Inter,sans-serif;color:#fff;background:var(--navy);cursor:pointer;width:100%}
+.btn.blue{background:var(--blue)}.btn.green{background:var(--green)}.btn.red{background:var(--red)}.btn.ghost{background:var(--soft);color:var(--ink)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:8px}.row>*{flex:1}
+.toggle{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:14px}
+.phone{background:var(--navy);border-radius:34px;padding:10px;max-width:340px;margin:0 auto;width:100%}
+.screen{background:#fff;border-radius:26px;min-height:520px;padding:16px 14px;display:flex;flex-direction:column;gap:10px}
+.sbar{display:flex;justify-content:space-between;font-size:12px;color:var(--mute)}
+.who{font-weight:700;font-size:15px}
+.bal{font-size:12px;color:var(--mute)}
+.box{border:1px solid var(--line);border-radius:10px;padding:10px;font-size:14px}
+.box.y{background:#fff8eb;border-color:#f5d69c}.box.r{background:#fff1f1;border-color:#f2b8b8}.box.g{background:#effaf3;border-color:#b6e2c5}.box.b{background:#eef4ff;border-color:#bcd2fb}
+.big{font-size:28px;font-weight:800;letter-spacing:-.5px}
+.timer{font-variant-numeric:tabular-nums;font-weight:800;font-size:22px}
+.bar{height:8px;background:var(--soft);border-radius:99px;overflow:hidden}.bar>i{display:block;height:100%;background:var(--purple);border-radius:99px;transition:width .5s}
+.sig{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px dashed var(--line)}
+.log{font-size:13px;max-height:260px;overflow:auto}
+.log div{padding:6px 0;border-bottom:1px solid var(--soft)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mute);font-weight:600;font-size:13px}
+input[type=range]{width:100%}
+.hide{display:none!important}
+.col{display:flex;flex-direction:column;gap:10px}
+.steps{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px}
+.steps span{font-size:12px;padding:4px 10px;border-radius:99px;background:var(--soft);color:var(--mute);font-weight:600}
+.steps span.on{background:var(--navy);color:#fff}
+.kbd{font-family:ui-monospace,Menlo,monospace;font-size:12px;background:var(--soft);padding:1px 6px;border-radius:5px}
+footer{max-width:1180px;margin:0 auto;padding:0 16px 40px;color:var(--mute);font-size:12px}
+@media (max-width:900px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.g3,.g2,.g4{grid-template-columns:1fr}h1{font-size:23px}nav{margin-left:0}}
+</style>
+</head>
+<body>
+<header><div class="top">
+ <div class="logo"><svg width="30" height="30" viewBox="0 0 170 170"><circle cx="85" cy="85" r="80" fill="#0B2A5B"/><circle cx="60" cy="62" r="16" fill="#fff"/><circle cx="110" cy="62" r="16" fill="#fff"/><path d="M38 128q0-40 22-40q22 0 22 40z" fill="#fff"/><path d="M88 128q0-40 22-40q22 0 22 40z" fill="#fff"/><path d="M70 104q15 14 30 0" stroke="#F59E0B" stroke-width="9" fill="none" stroke-linecap="round"/></svg>GANDENG</div>
+ <nav id="nav"><button data-t="sim" class="on">Simulasi</button><button data-t="dash">Dasbor IASC</button><button data-t="wali">Atur Wali</button><button data-t="cara">Cara Kerja</button></nav>
+</div></header>
+
+<main>
+<!-- SIMULASI -->
+<section id="t-sim">
+ <h1>Transfer sendirian menjadi keputusan berdua</h1>
+ <p class="lead">Coba kirim transfer sebagai Bu Ratna. TIMBANG menilai risiko, JEDA menahan transfer berisiko, dan WALI menghadirkan orang kedua. Semua data di halaman ini fiktif untuk peragaan.</p>
+ <div class="steps" id="steps"><span data-s="0" class="on">1 Isi transfer</span><span data-s="1">2 TIMBANG</span><span data-s="2">3 JEDA</span><span data-s="3">4 WALI</span><span data-s="4">5 Keputusan</span></div>
+ <div class="grid g3">
+  <!-- form -->
+  <div class="card">
+   <h2>Skenario</h2>
+   <label>Pilih skenario cepat</label>
+   <select id="preset">
+    <option value="">Atur manual</option>
+    <option value="a">Bayar SPP cucu (penerima lama)</option>
+    <option value="b">Belanja ke toko daring baru</option>
+    <option value="c">"Petugas bank" minta pindah ke rekening aman</option>
+    <option value="d">Rekening terlapor, nominal kecil (mesin tidak sepakat)</option>
+   </select>
+   <label>Penerima</label>
+   <select id="rcp"></select>
+   <label>Nominal (Rp)</label>
+   <input id="amt" type="number" min="10000" step="50000" value="1500000">
+   <div class="toggle"><input id="call" type="checkbox"><label for="call" style="margin:0;font-weight:500">Sedang dalam panggilan telepon (dibaca atas izin nasabah)</label></div>
+   <div class="toggle"><input id="night" type="checkbox"><label for="night" style="margin:0;font-weight:500">Transaksi di luar kebiasaan jam (22.00 sampai 05.00)</label></div>
+   <div style="margin-top:14px"><button class="btn" id="send">Kirim transfer</button></div>
+   <div style="margin-top:8px"><button class="btn ghost" id="reset">Ulangi simulasi</button></div>
+   <p class="small mute" style="margin-top:12px">Profil nasabah: Bu Ratna, 64 tahun, median transfer 90 hari Rp2.000.000, wali <b id="waliName">Dimas (anak)</b>.</p>
+  </div>
+  <!-- phone nasabah -->
+  <div>
+   <div class="phone"><div class="screen" id="ph1">
+    <div class="sbar"><span>09.41</span><span>Bank Mitra</span></div>
+    <div class="who">Halo, Bu Ratna</div><div class="bal">Tabungan Rp312.450.000</div>
+    <div id="ph1body" class="col"><div class="box b">Isi transfer di panel kiri lalu tekan <b>Kirim transfer</b>.</div></div>
+   </div></div>
+   <p class="small mute" style="text-align:center">Layar nasabah</p>
+  </div>
+  <!-- timbang + wali -->
+  <div class="grid" style="gap:16px">
+   <div class="card" id="engine">
+    <h2>TIMBANG</h2>
+    <div class="mute small">Dua mesin dihitung terpisah</div>
+    <div id="sigs" style="margin-top:8px" class="small mute">Belum ada transaksi.</div>
+   </div>
+   <div>
+    <div class="phone"><div class="screen" id="ph2" style="min-height:300px">
+     <div class="sbar"><span>09.41</span><span>Aplikasi Wali</span></div>
+     <div class="who" id="w2">Dimas</div>
+     <div id="ph2body" class="col"><div class="box">Tidak ada permintaan konfirmasi.</div></div>
+    </div></div>
+    <p class="small mute" style="text-align:center">Layar wali</p>
+   </div>
+  </div>
+ </div>
+ <div class="card" style="margin-top:16px"><h2>Jejak keputusan</h2><div class="log" id="log"><div class="mute">Belum ada kejadian.</div></div></div>
+</section>
+
+<!-- DASBOR -->
+<section id="t-dash" class="hide">
+ <h1>Dasbor IASC</h1>
+ <p class="lead">Angka nasional bersumber dari rilis OJK dan IASC. Kalkulator di bawah menghitung Rasio Dana Selamat dengan rumus yang sama seperti di esai.</p>
+ <div class="grid g4">
+  <div class="card"><div class="mute small">Laporan penipuan</div><div class="big">702.342</div><div class="small mute">22 Nov 2024 sampai 30 Sep 2026</div></div>
+  <div class="card"><div class="mute small">Rekening terlapor terverifikasi</div><div class="big">1.372.483</div><div class="small mute">702.833 sudah diblokir</div></div>
+  <div class="card"><div class="mute small">Kerugian tercatat</div><div class="big">Rp9,3 T</div><div class="small mute">Nov 2024 sampai Mei 2026</div></div>
+  <div class="card"><div class="mute small">Rasio Dana Selamat dasar</div><div class="big" style="color:var(--green)">7,24%</div><div class="small mute">Rp674,1 M ÷ Rp9,3 T</div></div>
+ </div>
+ <div class="grid g2" style="margin-top:16px">
+  <div class="card">
+   <h2>Kalkulator Rasio Dana Selamat</h2>
+   <label>Skenario efek JEDA (Akesson dkk., 2023)</label>
+   <select id="eff"><option value="18">Pesimis, peringatan perilaku (18%)</option><option value="55" selected>Moderat, desain ulang tombol (55%)</option><option value="82">Optimis, gabungan, batas atas (82%)</option></select>
+   <label>Tingkat tangkap TIMBANG: <b id="capv">13</b>%</label>
+   <input type="range" id="cap" min="0" max="60" value="13">
+   <div class="grid g2" style="margin-top:12px">
+    <div class="box g"><div class="small mute">Rasio total</div><div class="big" id="rtot">14,39%</div></div>
+    <div class="box b"><div class="small mute">Dana tambahan selamat*</div><div class="big" id="radd">Rp665 M</div></div>
+   </div>
+   <p class="small mute" id="impas">Ambang impas skenario ini 13,2%.</p>
+   <p class="small mute">*Pada skala kerugian Rp9,3 T selama 19 bulan. Rumus: 7,24% + tangkap × efek. Efek per orang diasumsikan berlaku pada nilai dana dan wajib diuji pada pilot.</p>
+  </div>
+  <div class="card">
+   <h2>Modus bertekanan (per 14 Jan 2026)</h2>
+   <div id="modes"></div>
+   <p class="small mute">Tiga modus bertekanan mencakup 94.280 laporan, sekitar 22% dari sekitar 432 ribu laporan pada periode yang sama. Modus inilah sasaran utama GANDENG.</p>
+   <h2 style="margin-top:14px">Sesi peragaan ini</h2>
+   <table><tr><th>Hasil</th><th>Jumlah</th><th>Nilai</th></tr>
+    <tbody id="sess"></tbody></table>
+  </div>
+ </div>
+</section>
+
+<!-- WALI -->
+<section id="t-wali" class="hide">
+ <h1>Atur kontak wali</h1>
+ <p class="lead">Wali hanya menerima nominal dan nama penerima transfer merah, tanpa akses saldo, atas persetujuan nasabah. Pergantian wali berlaku setelah 72 jam agar pelaku tidak bisa mengganti wali di tengah penipuan.</p>
+ <div class="grid g2">
+  <div class="card">
+   <label>Wali aktif</label><input type="text" id="curWali" disabled>
+   <label>Calon wali baru</label><input type="text" id="newWali" placeholder="Nama dan hubungan, misal Sari (adik)">
+   <div class="toggle"><input type="checkbox" id="consent"><label for="consent" style="margin:0;font-weight:500">Saya setuju wali menerima nominal dan nama penerima transfer merah</label></div>
+   <div style="margin-top:12px" class="row"><button class="btn blue" id="ajukan">Ajukan pergantian</button><button class="btn ghost" id="maju">Majukan waktu 72 jam</button></div>
+   <div id="pending" class="box y" style="margin-top:12px;display:none"></div>
+  </div>
+  <div class="card">
+   <h2>Pengaturan nasabah</h2>
+   <table>
+    <tr><td>Aktivasi</td><td>Otomatis untuk usia 60+, dapat keluar kapan saja</td></tr>
+    <tr><td>Jeda kuning</td><td>15 menit, diuji pada pilot</td></tr>
+    <tr><td>Batas merah</td><td>Sampai hari kerja berikutnya, lalu perintah ditolak dan dapat diulang</td></tr>
+    <tr><td>Wali tidak merespons</td><td>60 menit, lalu petugas bank lewat kanal aplikasi</td></tr>
+    <tr><td>Kanal resmi bank</td><td>Hanya panggilan di dalam aplikasi</td></tr>
+   </table>
+   <div style="margin-top:12px"><button class="btn ghost" id="optout">Keluar dari GANDENG</button></div>
+  </div>
+ </div>
+</section>
+
+<!-- CARA KERJA -->
+<section id="t-cara" class="hide">
+ <h1>Cara kerja GANDENG</h1>
+ <p class="lead">Lapisan tambahan di aplikasi bank yang sudah ada. Tidak membekukan rekening, tidak menggantikan kewenangan IASC dalam pemblokiran, dan tidak memutuskan atas nama nasabah.</p>
+ <div class="grid g3">
+  <div class="card"><span class="tag t-p">TIMBANG</span><h3 style="margin-top:8px">Menakar risiko</h3><p class="small">Model pembelajaran mesin memberi skor 0 sampai 100 dari sinyal penerima baru, nominal tak biasa, panggilan telepon aktif, dan jam tak biasa. Mesin kedua mencocokkan rekening tujuan dengan daftar terlapor IASC. Bila keduanya tidak sepakat, perbedaan itu ditampilkan sebagai sinyal.</p></div>
+  <div class="card"><span class="tag t-y">JEDA</span><h3 style="margin-top:8px">Memberi waktu</h3><p class="small">Hijau (skor &lt;40 dan tidak terlapor) diteruskan. Kuning (40 sampai 69) ditahan 15 menit dengan pertanyaan pengganti tombol kirim. Merah (≥70 atau rekening terlapor) menunggu konfirmasi manusia sampai hari kerja berikutnya.</p></div>
+  <div class="card"><span class="tag t-g">WALI</span><h3 style="margin-top:8px">Menghadirkan orang kedua</h3><p class="small">Wali menelepon nasabah lewat aplikasi lalu menjawab satu pertanyaan, yaitu apakah penelepon meminta transfer dirahasiakan. Wali yang tidak merespons dalam 60 menit digantikan petugas bank.</p></div>
+ </div>
+ <div class="grid g2" style="margin-top:16px">
+  <div class="card"><h2>Rumus skor (versi peragaan)</h2>
+   <p class="small">skor = 100 × σ(−3,2 + 1,4·penerima_baru + 0,9·log₂(nominal ÷ median) + 1,6·telepon_aktif + 0,5·jam_tak_biasa)</p>
+   <p class="small mute">Bobot pada purwarupa ini hanya ilustrasi. Pada pilot, bobot dilatih dari riwayat transaksi berlabel laporan IASC dan diperbarui tiap triwulan.</p></div>
+  <div class="card"><h2>Dasar hukum dan data</h2>
+   <table>
+    <tr><td>UU 3/2011 Pasal 19</td><td>Bank pengirim dapat menolak pengaksepan dengan alasan wajar paling lambat hari kerja berikutnya</td></tr>
+    <tr><td>UU 3/2011 Pasal 72</td><td>Pengawasan transfer dana oleh Bank Indonesia</td></tr>
+    <tr><td>POJK 12/2024</td><td>Strategi anti-fraud, termasuk sistem deteksi</td></tr>
+    <tr><td>UU 27/2022</td><td>Persetujuan nasabah atas data yang diterima wali</td></tr>
+   </table></div>
+ </div>
+</section>
+</main>
+<footer>Purwarupa esai GANDENG · DEC National Essay Competition 2026 · I Dewa Putu Sanjaya Ditha (PKN STAN). Data nasabah fiktif. Angka nasional dari OJK/IASC dan media yang dikutip di naskah.</footer>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const rp=n=>'Rp'+Math.round(n).toLocaleString('id-ID');
+const pct=n=>n.toLocaleString('id-ID',{maximumFractionDigits:2})+'%';
+const store={get(k,d){try{const v=localStorage.getItem('gandeng_'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('gandeng_'+k,JSON.stringify(v))}catch(e){}}};
+// tabs
+$$('#nav button').forEach(b=>b.onclick=()=>{$$('#nav button').forEach(x=>x.classList.toggle('on',x===b));['sim','dash','wali','cara'].forEach(t=>$('#t-'+t).classList.toggle('hide',t!==b.dataset.t));store.set('tab',b.dataset.t)});
+const lastTab=store.get('tab','sim');const tb=$(`#nav button[data-t="${lastTab}"]`);if(tb)tb.click();
+
+const RCP=[
+ {id:'lama',name:'Ani (cucu) · rekening SPP',newp:0,listed:0},
+ {id:'toko',name:'Toko Elektronik Jaya (baru)',newp:1,listed:0},
+ {id:'aman',name:'"Rekening aman" A***D (baru)',newp:1,listed:1},
+ {id:'kecil',name:'Rekening B***S (baru)',newp:1,listed:1}];
+$('#rcp').innerHTML=RCP.map(r=>`<option value="${r.id}">${r.name}</option>`).join('');
+const MEDIAN=2000000;
+let state={wali:store.get('wali','Dimas (anak)'),optout:store.get('optout',false),sess:{hijau:[0,0],dibatalkan:[0,0],terkirim_setelah_jeda:[0,0],ditolak_H1:[0,0]}};
+$('#waliName').textContent=state.wali;$('#w2').textContent=state.wali.split(' ')[0];
+
+$('#preset').onchange=e=>{const v=e.target.value;const P={a:['lama',1500000,0,0],b:['toko',9000000,0,0],c:['aman',48000000,1,0],d:['kecil',300000,0,0]}[v];if(!P)return;$('#rcp').value=P[0];$('#amt').value=P[1];$('#call').checked=!!P[2];$('#night').checked=!!P[3];};
+
+function score(r,amt,call,night){
+ const ratio=Math.max(0,Math.min(5,Math.log2(Math.max(amt,1)/MEDIAN)));
+ const parts=[['Penerima baru',1.4*r.newp],['Nominal vs median 90 hari',0.9*ratio],['Telepon aktif',1.6*(call?1:0)],['Jam tak biasa',0.5*(night?1:0)]];
+ const z=-3.2+parts.reduce((a,p)=>a+p[1],0);
+ return {s:Math.round(100/(1+Math.exp(-z))),parts};
+}
+function steps(n){$$('#steps span').forEach(s=>s.classList.toggle('on',+s.dataset.s<=n))}
+function log(t,cls){const l=$('#log');if(l.firstChild&&l.firstChild.classList&&l.firstChild.classList.contains('mute'))l.innerHTML='';const d=document.createElement('div');const now=new Date();d.innerHTML=`<span class="tag ${cls||'t-n'}">${now.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',second:'2-digit'})}</span> ${t}`;l.prepend(d);}
+function sess(k,amt){state.sess[k][0]++;state.sess[k][1]+=amt;renderSess();}
+function renderSess(){const L={hijau:'Hijau, langsung terkirim',dibatalkan:'Dibatalkan setelah jeda/wali',terkirim_setelah_jeda:'Terkirim setelah jeda',ditolak_H1:'Ditolak H+1 tanpa konfirmasi'};$('#sess').innerHTML=Object.entries(state.sess).map(([k,v])=>`<tr><td>${L[k]}</td><td>${v[0]}</td><td>${rp(v[1])}</td></tr>`).join('');}
+renderSess();
+
+let timer=null,cur=null;
+function clearT(){if(timer){clearInterval(timer);timer=null}}
+function ph1(html){$('#ph1body').innerHTML=html}
+function ph2(html){$('#ph2body').innerHTML=html}
+
+$('#send').onclick=()=>{
+ clearT();const r=RCP.find(x=>x.id===$('#rcp').value);const amt=+$('#amt').value||0;const call=$('#call').checked,night=$('#night').checked;
+ if(amt<10000){alertBox('Nominal minimal Rp10.000');return}
+ const {s,parts}=score(r,amt,call,night);
+ const listed=!!r.listed;
+ let cls= (s>=70||listed)?'merah':(s>=40?'kuning':'hijau');
+ if(state.optout) cls='hijau';
+ const disagree=(listed&&s<40)||(!listed&&s>=70);
+ cur={r,amt,s,cls};
+ $('#sigs').innerHTML=`<div class="small" style="margin-bottom:6px"><b>Mesin 1</b> model skor</div>`+parts.map(p=>`<div class="sig"><span>${p[0]}</span><span>+${p[1].toFixed(2)}</span></div>`).join('')+
+  `<div style="margin:10px 0 4px" class="small">Skor risiko <b>${s}</b>/100</div><div class="bar"><i style="width:${s}%"></i></div>
+   <div class="small" style="margin-top:10px"><b>Mesin 2</b> daftar IASC: ${listed?'<span class="tag t-r">terlapor</span>':'<span class="tag t-g">tidak terlapor</span>'}</div>
+   ${disagree?'<div class="box y small" style="margin-top:8px">Dua mesin tidak sepakat. Perbedaan ini dicatat sebagai sinyal dan dikirim ke IASC untuk pelatihan ulang.</div>':''}
+   <div style="margin-top:10px">Keluaran: <span class="tag ${cls==='merah'?'t-r':cls==='kuning'?'t-y':'t-g'}">${cls.toUpperCase()}</span>${state.optout?' <span class="small mute">(nasabah keluar dari GANDENG)</span>':''}</div>`;
+ steps(1);log(`TIMBANG: ${r.name}, ${rp(amt)}, skor ${s}, ${listed?'terlapor':'tidak terlapor'} → ${cls}`,'t-p');
+ ph2('<div class="box">Tidak ada permintaan konfirmasi.</div>');
+ if(cls==='hijau'){steps(4);ph1(`<div class="box g">✅ Transfer ${rp(amt)} ke ${r.name} berhasil.</div>`);sess('hijau',amt);log('Hijau, diteruskan tanpa jeda','t-g');return}
+ if(cls==='kuning') return kuning();
+ merah();
+};
+function alertBox(t){ph1(`<div class="box r">${t}</div>`)}
+function kuning(){
+ window.kOK=false;steps(2);let left=15*60;
+ const draw=()=>ph1(`<div class="box y"><b>⏸ Transfer ditahan sebentar</b><br>${rp(cur.amt)} ke ${cur.r.name}<div class="timer" style="margin-top:6px">${String(Math.floor(left/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}</div></div>
+  <div class="box"><b>Apakah ada orang yang sedang menelepon dan meminta Ibu mentransfer?</b></div>
+  <button class="btn red" onclick="kAns(true)">Ya, ada yang menelepon</button>
+  <button class="btn blue" onclick="kAns(false)">Tidak, ini keperluan saya</button>
+  <div id="kmsg" class="box b small ${window.kOK?'':'hide'}">Jawaban tercatat. Transfer diteruskan setelah jeda selesai.</div>
+  <button class="btn ghost" onclick="fast()">⏩ Percepat waktu (peragaan)</button>`);
+ draw();log('JEDA kuning dimulai, 15 menit','t-y');
+ timer=setInterval(()=>{left-=1;if(left<=0){clearT();ph1(`<div class="box g">Jeda selesai. Transfer ${rp(cur.amt)} dapat dilanjutkan.</div><button class="btn" onclick="kAns(false,true)">Lanjutkan transfer</button><button class="btn ghost" onclick="cancelT('Nasabah membatalkan setelah jeda')">Batalkan</button>`);return}draw()},1000);
+ window.fast=()=>{left=Math.min(left,3)};
+}
+window.kAns=(yes,done)=>{
+ if(!yes&&!done){log('Nasabah menyatakan keperluan sendiri, jeda 15 menit tetap berjalan','t-y');const b=document.getElementById('kmsg');if(b)b.classList.remove('hide');window.kOK=true;return}
+ clearT();
+ if(yes){log('Nasabah menjawab ada penelepon → naik ke MERAH','t-r');cur.cls='merah';return merah(true)}
+ if(!done){ // tetap tunggu sisa jeda singkat
+  ph1(`<div class="box b">Terima kasih. Karena ini keperluan Ibu sendiri, transfer diteruskan setelah jeda singkat.</div>`);
+ }
+ steps(4);ph1(`<div class="box g">✅ Transfer ${rp(cur.amt)} ke ${cur.r.name} terkirim setelah jeda.</div>`);sess('terkirim_setelah_jeda',cur.amt);log('Kuning, terkirim setelah jeda','t-b');
+};
+function merah(fromYellow){
+ steps(3);let left=60*60;
+ ph1(`<div class="box r"><b>⛔ Transfer menunggu konfirmasi</b><br>${rp(cur.amt)} ke ${cur.r.name}<br><span class="small">Pengaksepan belum diputuskan. Batas keputusan hari kerja berikutnya.</span></div>
+  <div class="box small">Bank tidak pernah menelepon dari nomor biasa. Bila ada yang mengaku petugas bank, tutup teleponnya.</div>
+  <button class="btn green" onclick="callWali()">📞 Hubungi ${state.wali.split(' ')[0]} lewat aplikasi</button>
+  <button class="btn" onclick="cancelT('Nasabah membatalkan transfer merah')">Batalkan transfer</button>`);
+ const drawW=()=>ph2(`<div><div class="box r small">Ibu Ratna akan mentransfer <b>${rp(cur.amt)}</b> ke <b>${cur.r.name}</b>. Anda tidak dapat melihat saldo.</div>
+  <div class="small mute" style="margin:6px 0">Sisa waktu sebelum dialihkan ke petugas bank <span class="timer" style="font-size:16px">${String(Math.floor(left/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}</span></div>
+  <button class="btn blue" onclick="callWali()">📞 Telepon Ibu lewat aplikasi</button>
+  <div class="box small" style="margin-top:8px"><b>Setelah bicara:</b> apakah penelepon meminta transfer ini dirahasiakan?</div>
+  <div class="row" style="margin-top:6px"><button class="btn red" onclick="wAns(true)">Ya, dirahasiakan</button><button class="btn green" onclick="wAns(false)">Tidak, aman</button></div>
+  <button class="btn ghost" style="margin-top:6px" onclick="wFast()">⏩ Lewati 60 menit (peragaan)</button></div>`);
+ drawW();log(`JEDA merah, notifikasi ke wali ${state.wali}`,'t-r');
+ timer=setInterval(()=>{left-=1;if(left<=0){clearT();return officer()}drawW()},1000);
+ window.wFast=()=>{left=Math.min(left,2)};
+}
+window.callWali=()=>{log('Panggilan di dalam aplikasi antara nasabah dan wali tersambung','t-g');};
+window.wAns=(secret)=>{
+ clearT();steps(4);
+ if(secret){ph2('<div class="box g">Terima kasih. Transfer dibatalkan dan rekening tujuan dilaporkan ke IASC.</div>');cancelT('Wali mengonfirmasi ada permintaan rahasia → dibatalkan dan dilaporkan ke IASC',true);}
+ else{ph2('<div class="box g">Konfirmasi tercatat. Keputusan akhir tetap di tangan Ibu Ratna.</div>');
+  ph1(`<div class="box b">Wali sudah bicara dengan Ibu. Keputusan akhir tetap milik Ibu.</div><button class="btn blue" onclick="finalSend()">Lanjutkan transfer</button><button class="btn" onclick="cancelT('Nasabah membatalkan setelah bicara dengan wali')">Batalkan</button>`);log('Wali menyatakan aman, keputusan dikembalikan ke nasabah','t-g');}
+};
+window.finalSend=()=>{ph1(`<div class="box g">✅ Transfer ${rp(cur.amt)} terkirim setelah konfirmasi.</div>`);sess('terkirim_setelah_jeda',cur.amt);log('Merah, terkirim setelah konfirmasi','t-b');};
+function officer(){
+ log('Wali tidak merespons 60 menit → dialihkan ke petugas bank lewat kanal aplikasi','t-n');
+ ph2('<div class="box">Wali tidak merespons. Kasus dialihkan ke petugas bank.</div>');
+ ph1(`<div class="box b"><b>Petugas bank (kanal aplikasi)</b><br>Apakah ada yang meminta Ibu merahasiakan transfer ini?</div>
+  <button class="btn red" onclick="cancelT('Petugas bank: ada permintaan rahasia → dibatalkan dan dilaporkan',true)">Ya, ada</button>
+  <button class="btn blue" onclick="finalSend()">Tidak ada, lanjutkan</button>
+  <button class="btn ghost" onclick="h1()">⏩ Tidak dijawab sampai hari kerja berikutnya</button>`);
+}
+window.h1=()=>{steps(4);ph1(`<div class="box">Tanpa konfirmasi sampai hari kerja berikutnya, perintah transfer <b>ditolak</b>. Dana tetap di rekening Ibu dan perintah dapat diulang.</div>`);sess('ditolak_H1',cur.amt);log('Ditolak H+1 sesuai UU 3/2011 Pasal 19','t-n');};
+window.cancelT=(why,report)=>{clearT();steps(4);ph1(`<div class="box g">🛡️ Transfer ${rp(cur.amt)} dibatalkan. Dana tetap aman di rekening.${report?'<br><span class="small">Rekening tujuan dilaporkan ke IASC.</span>':''}</div>`);sess('dibatalkan',cur.amt);log(why,'t-g');};
+$('#reset').onclick=()=>{clearT();steps(0);ph1('<div class="box b">Isi transfer di panel kiri lalu tekan <b>Kirim transfer</b>.</div>');ph2('<div class="box">Tidak ada permintaan konfirmasi.</div>');$('#sigs').innerHTML='<span class="small mute">Belum ada transaksi.</span>'};
+
+// dashboard
+const modes=[['Penipuan transaksi belanja',73743,0],['Penyamaran (fake call)',44446,1],['Investasi',26365,1],['Lowongan kerja',23469,1],['Media sosial',19983,0]];
+$('#modes').innerHTML=modes.map(m=>`<div style="margin:6px 0"><div class="sig" style="border:0"><span>${m[0]} ${m[2]?'<span class="tag t-r">bertekanan</span>':''}</span><span>${m[1].toLocaleString('id-ID')}</span></div><div class="bar"><i style="width:${m[1]/73743*100}%;background:${m[2]?'var(--red)':'#b9b8b4'}"></i></div></div>`).join('');
+function calc(){const e=+$('#eff').value,c=+$('#cap').value;$('#capv').textContent=c;const add=c*e/100;const tot=7.24+add;$('#rtot').textContent=pct(tot);$('#radd').textContent='Rp'+Math.round(add*93).toLocaleString('id-ID')+' M';$('#impas').textContent=`Ambang impas skenario ini ${pct(7.24/e*100)} tingkat tangkap. ${c>=7.24/e*100?'Sudah melampaui garis dasar tambahan.':'Belum menyamai garis dasar.'}`;}
+$('#eff').onchange=calc;$('#cap').oninput=calc;calc();
+
+// wali
+$('#curWali').value=state.wali;
+const pend=store.get('pending',null);
+function showPend(){const p=store.get('pending',null);const el=$('#pending');if(!p){el.style.display='none';return}const h=Math.max(0,72-((Date.now()-p.t)/3600000+(p.skip||0)));el.style.display='block';
+ if(h<=0){state.wali=p.name;store.set('wali',p.name);store.set('pending',null);$('#curWali').value=p.name;$('#waliName').textContent=p.name;$('#w2').textContent=p.name.split(' ')[0];el.className='box g';el.textContent=`Wali baru aktif: ${p.name}.`;return}
+ el.className='box y';el.textContent=`Pergantian ke ${p.name} berlaku dalam ${h.toFixed(1)} jam. Wali lama tetap aktif dan diberi tahu.`;}
+showPend();
+$('#ajukan').onclick=()=>{const n=$('#newWali').value.trim();if(!n||!$('#consent').checked){const el=$('#pending');el.style.display='block';el.className='box r';el.textContent='Isi nama wali dan centang persetujuan terlebih dahulu.';return}store.set('pending',{name:n,t:Date.now(),skip:0});showPend();};
+$('#maju').onclick=()=>{const p=store.get('pending',null);if(!p)return;p.skip=72;store.set('pending',p);showPend();};
+$('#optout').onclick=()=>{state.optout=!state.optout;store.set('optout',state.optout);$('#optout').textContent=state.optout?'Aktifkan kembali GANDENG':'Keluar dari GANDENG';};
+$('#optout').textContent=state.optout?'Aktifkan kembali GANDENG':'Keluar dari GANDENG';
+</script>
+</body>
+</html>
